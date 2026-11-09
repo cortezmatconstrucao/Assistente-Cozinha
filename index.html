@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Cozinha</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<style>
+:root{
+  --ink:#2e3440; --ink-soft:#5b6472;
+  --glass:rgba(255,255,255,.42); --glass-edge:rgba(255,255,255,.7);
+  --peach:#ffd9c7; --mint:#cdeedd; --sky:#cfe3fb; --lilac:#e3d6f5;
+  --accent:#e8845f; --accent-2:#6fae94;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{
+  font-family:-apple-system,"SF Pro Rounded","Segoe UI",Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(60vmax 60vmax at 10% 10%,var(--peach),transparent 60%),
+    radial-gradient(60vmax 60vmax at 95% 15%,var(--sky),transparent 60%),
+    radial-gradient(70vmax 70vmax at 80% 100%,var(--mint),transparent 60%),
+    radial-gradient(60vmax 60vmax at 0% 100%,var(--lilac),transparent 60%),
+    #f6efe9;
+  user-select:none;-webkit-user-select:none;
+}
+.grid{
+  height:100%;display:grid;gap:2.2vmin;padding:2.4vmin;
+  grid-template-columns:1.1fr 1fr;grid-template-rows:1fr 1.15fr;
+}
+.card{
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5);
+  border:1.5px solid var(--glass-edge);border-radius:4.5vmin;
+  box-shadow:0 1.5vmin 5vmin rgba(90,80,110,.12);
+  padding:3vmin 3.4vmin;min-height:0;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.label{font-size:2.3vmin;font-weight:600;color:var(--ink-soft);margin-bottom:1vmin}
+
+/* Relógio */
+#clock{justify-content:center}
+#time{font-size:19vmin;font-weight:700;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+#time span{opacity:.35;transition:opacity .3s}
+#date{font-size:3.6vmin;font-weight:500;margin-top:1.6vmin;color:var(--ink-soft)}
+
+/* Tempo */
+#now{display:flex;align-items:center;gap:2.4vmin}
+#now .ico{font-size:10vmin;line-height:1}
+#now .temp{font-size:11vmin;font-weight:700;line-height:1}
+#now .desc{font-size:3.2vmin;font-weight:500}
+#now .det{font-size:2.5vmin;color:var(--ink-soft);margin-top:.4vmin}
+#days{display:flex;gap:1.4vmin;margin-top:auto}
+.day{flex:1;background:rgba(255,255,255,.5);border-radius:2.6vmin;padding:1.4vmin .8vmin;text-align:center}
+.day b{display:block;font-size:2.4vmin;font-weight:600}
+.day i{display:block;font-style:normal;font-size:4.2vmin;margin:.3vmin 0}
+.day span{font-size:2.5vmin;font-weight:600}
+.day small{display:block;font-size:2.1vmin;color:var(--ink-soft)}
+#wmsg{font-size:2.6vmin;color:var(--ink-soft)}
+
+/* Cronômetro */
+#timer{transition:background .3s}
+#timer.ring{animation:pulse .8s infinite;background:rgba(255,190,170,.75)}
+@keyframes pulse{50%{background:rgba(255,235,150,.85)}}
+#tdisp{font-size:15vmin;font-weight:700;font-variant-numeric:tabular-nums;line-height:1;text-align:center;margin:.6vmin 0 1.6vmin}
+.row{display:flex;gap:1.6vmin}
+.btn{
+  flex:1;border:0;border-radius:3vmin;padding:2.4vmin 1vmin;font:inherit;font-size:3.6vmin;font-weight:700;
+  color:var(--ink);background:rgba(255,255,255,.7);box-shadow:0 .5vmin 1.6vmin rgba(90,80,110,.1);
+  cursor:pointer;transition:transform .08s,background .15s;
+}
+.btn:active{transform:scale(.95)}
+.btn.main{background:var(--accent);color:#fff}
+.btn.sec{font-size:2.8vmin;font-weight:600;background:rgba(255,255,255,.45)}
+#timer .row+.row{margin-top:1.4vmin}
+#stop{display:none;background:#d9534f;color:#fff;font-size:4.4vmin}
+#timer.ring #stop{display:block}
+#timer.ring .row{display:none}
+#timer.ring #stoprow{display:flex}
+#stoprow{display:none}
+
+/* Receita */
+#recipe h2{font-size:3.2vmin;font-weight:700;margin-bottom:.4vmin}
+#dots{display:flex;gap:.9vmin;margin:1vmin 0 1.6vmin}
+#dots i{flex:1;height:1vmin;border-radius:1vmin;background:rgba(255,255,255,.7)}
+#dots i.on{background:var(--accent-2)}
+#step{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center}
+#stepn{font-size:2.6vmin;font-weight:600;color:var(--accent-2);margin-bottom:.8vmin}
+#steptxt{font-size:4vmin;font-weight:600;line-height:1.28}
+#stepbtn{align-self:flex-start;margin-top:1.6vmin;flex:none;padding:1.4vmin 2.6vmin;font-size:2.8vmin;background:var(--mint)}
+#recipe .row{margin-top:1.6vmin}
+#recipe .btn{padding:2.2vmin 1vmin}
+
+/* iPad em pé / telas estreitas */
+@media (max-aspect-ratio:1/1){
+  .grid{grid-template-columns:1fr;grid-template-rows:auto auto auto 1fr}
+  #time{font-size:20vmin}
+  .card{padding:2.6vmin 3.4vmin}
+}
+@media (prefers-reduced-motion:reduce){#timer.ring{animation:none}}
+</style>
+</head>
+<body>
+<div class="grid">
+
+  <section class="card" id="clock">
+    <div id="time">--<span>:</span>--</div>
+    <div id="date"></div>
+  </section>
+
+  <section class="card" id="weather">
+    <div class="label">Braúna – SP</div>
+    <div id="now"><div class="ico" id="wico">…</div>
+      <div><div class="temp" id="wtemp">--°</div></div>
+      <div><div class="desc" id="wdesc">Carregando</div><div class="det" id="wdet"></div></div>
+    </div>
+    <div id="wmsg"></div>
+    <div id="days"></div>
+  </section>
+
+  <section class="card" id="timer">
+    <div class="label">Cronômetro</div>
+    <div id="tdisp">00:00</div>
+    <div class="row">
+      <button class="btn" data-min="5">5 min</button>
+      <button class="btn" data-min="10">10 min</button>
+      <button class="btn" data-min="30">30 min</button>
+    </div>
+    <div class="row">
+      <button class="btn sec" id="plus">+1 min</button>
+      <button class="btn sec" id="pause">Pausar</button>
+      <button class="btn sec" id="reset">Zerar</button>
+    </div>
+    <div class="row" id="stoprow"><button class="btn" id="stop">Parar alarme</button></div>
+  </section>
+
+  <section class="card" id="recipe">
+    <div class="label">Receita</div>
+    <h2 id="rtitle"></h2>
+    <div id="dots"></div>
+    <div id="step">
+      <div id="stepn"></div>
+      <div id="steptxt"></div>
+      <button class="btn" id="stepbtn"></button>
+    </div>
+    <div class="row">
+      <button class="btn" id="prev">Anterior</button>
+      <button class="btn main" id="next">Próximo</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ===== Troque aqui a receita ===== */
+var RECEITA = {
+  titulo: "Pão de queijo mineiro",
+  passos: [
+    { t: "Aqueça o forno a 200 °C e unte uma assadeira." },
+    { t: "Ferva 1 xícara de leite, 1/2 xícara de óleo e 1 colher de chá de sal." },
+    { t: "Despeje a mistura quente sobre 3 xícaras de polvilho azedo e misture bem." },
+    { t: "Deixe a massa amornar por uns minutos.", min: 10 },
+    { t: "Junte 2 ovos, um a um, e 200 g de queijo meia cura ralado. Amasse até ficar lisa." },
+    { t: "Faça bolinhas com as mãos untadas e distribua na assadeira." },
+    { t: "Asse até dourar.", min: 30 },
+    { t: "Pronto! Sirva quentinho." }
+  ]
+};
+var LAT = -21.50, LON = -50.32; // Braúna - SP
+
+function $(id){return document.getElementById(id)}
+function pad(n){return (n<10?'0':'')+n}
+
+/* ===== Relógio e data ===== */
+var blink = true;
+function tickClock(){
+  var d = new Date(); blink = !blink;
+  $('time').innerHTML = pad(d.getHours()) + '<span style="opacity:' + (blink?.9:.25) + '">:</span>' + pad(d.getMinutes());
+  var s = d.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  $('date').textContent = s.charAt(0).toUpperCase() + s.slice(1);
+}
+tickClock(); setInterval(tickClock, 1000);
+
+/* ===== Previsão (Open-Meteo) ===== */
+var WMO = {
+  0:['☀️','Céu limpo'],1:['🌤️','Poucas nuvens'],2:['⛅','Parcialmente nublado'],3:['☁️','Nublado'],
+  45:['🌫️','Neblina'],48:['🌫️','Neblina'],51:['🌦️','Garoa fraca'],53:['🌦️','Garoa'],55:['🌦️','Garoa forte'],
+  61:['🌧️','Chuva fraca'],63:['🌧️','Chuva'],65:['🌧️','Chuva forte'],80:['🌦️','Pancadas de chuva'],
+  81:['🌧️','Pancadas fortes'],82:['⛈️','Temporal'],95:['⛈️','Trovoada'],96:['⛈️','Trovoada com granizo'],99:['⛈️','Trovoada com granizo']
+};
+function wmo(c){return WMO[c] || ['🌡️','—']}
+function loadWeather(){
+  var url = 'https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON+
+    '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m'+
+    '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'+
+    '&timezone=America%2FSao_Paulo&forecast_days=4';
+  var x = new XMLHttpRequest();
+  x.open('GET', url); x.timeout = 15000;
+  x.onload = function(){
+    try{
+      var j = JSON.parse(x.responseText), c = j.current, dl = j.daily, w = wmo(c.weather_code);
+      $('wico').textContent = w[0];
+      $('wtemp').textContent = Math.round(c.temperature_2m) + '°';
+      $('wdesc').textContent = w[1];
+      $('wdet').textContent = 'Sensação ' + Math.round(c.apparent_temperature) + '° · Umidade ' + c.relative_humidity_2m + '%';
+      $('wmsg').textContent = 'Hoje: máx ' + Math.round(dl.temperature_2m_max[0]) + '° · mín ' + Math.round(dl.temperature_2m_min[0]) +
+        '° · chuva ' + dl.precipitation_probability_max[0] + '%';
+      var h = '';
+      for(var i=1;i<4;i++){
+        var dt = new Date(dl.time[i] + 'T12:00:00');
+        var nome = dt.toLocaleDateString('pt-BR',{weekday:'short'}).replace('.','');
+        h += '<div class="day"><b>'+nome+'</b><i>'+wmo(dl.weather_code[i])[0]+'</i><span>'+
+          Math.round(dl.temperature_2m_max[i])+'°</span><small>'+Math.round(dl.temperature_2m_min[i])+'° · '+
+          dl.precipitation_probability_max[i]+'%</small></div>';
+      }
+      $('days').innerHTML = h;
+    }catch(e){ fail(); }
+  };
+  x.onerror = x.ontimeout = fail;
+  x.send();
+}
+function fail(){ $('wdesc').textContent = 'Sem conexão'; $('wmsg').textContent = 'Vou tentar de novo em instantes.'; setTimeout(loadWeather, 60000); }
+loadWeather(); setInterval(loadWeather, 15*60*1000);
+
+/* ===== Cronômetro e alarme ===== */
+var endAt = 0, left = 0, running = false, ringTimer = null, ctx = null;
+function audio(){
+  try{
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if(!ctx && AC) ctx = new AC();
+    if(ctx && ctx.state === 'suspended') ctx.resume();
+  }catch(e){}
+}
+function beep(){
+  if(!ctx) return;
+  [0,.22,.44].forEach(function(dt){
+    var o = ctx.createOscillator(), g = ctx.createGain(), t = ctx.currentTime + dt;
+    o.type = 'sine'; o.frequency.value = 880;
+    g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.6,t+.02); g.gain.exponentialRampToValueAtTime(.0001,t+.18);
+    o.connect(g); g.connect(ctx.destination); o.start(t); o.stop(t+.2);
+  });
+}
+function show(ms){
+  var s = Math.max(0, Math.ceil(ms/1000));
+  $('tdisp').textContent = pad(Math.floor(s/60)) + ':' + pad(s%60);
+}
+function start(min){
+  audio(); stopAlarm();
+  left = min*60000; endAt = Date.now() + left; running = true;
+  $('pause').textContent = 'Pausar'; show(left);
+}
+function ring(){
+  running = false; left = 0; show(0);
+  $('timer').className = 'card ring';
+  beep(); ringTimer = setInterval(beep, 1400);
+  if(navigator.vibrate) navigator.vibrate([400,200,400]);
+}
+function stopAlarm(){
+  if(ringTimer){ clearInterval(ringTimer); ringTimer = null; }
+  $('timer').className = 'card';
+}
+setInterval(function(){
+  if(running){
+    left = endAt - Date.now();
+    if(left <= 0) ring(); else show(left);
+  }
+}, 200);
+
+var mb = document.querySelectorAll('[data-min]');
+for(var i=0;i<mb.length;i++){ (function(b){ b.onclick = function(){ start(+b.getAttribute('data-min')); }; })(mb[i]); }
+$('plus').onclick = function(){
+  audio();
+  if(running){ endAt += 60000; left = endAt - Date.now(); }
+  else { left += 60000; }
+  show(left);
+};
+$('pause').onclick = function(){
+  audio();
+  if(running){ running = false; left = endAt - Date.now(); this.textContent = 'Continuar'; }
+  else if(left > 0){ endAt = Date.now() + left; running = true; this.textContent = 'Pausar'; }
+};
+$('reset').onclick = function(){ running = false; left = 0; show(0); $('pause').textContent = 'Pausar'; stopAlarm(); };
+$('stop').onclick = function(){ stopAlarm(); show(0); };
+
+/* ===== Receita ===== */
+var idx = 0, P = RECEITA.passos;
+$('rtitle').textContent = RECEITA.titulo;
+var dh = ''; for(var k=0;k<P.length;k++) dh += '<i></i>'; $('dots').innerHTML = dh;
+function renderStep(){
+  var p = P[idx], d = $('dots').children;
+  for(var k=0;k<d.length;k++) d[k].className = k<=idx ? 'on' : '';
+  $('stepn').textContent = 'Passo ' + (idx+1) + ' de ' + P.length;
+  $('steptxt').textContent = p.t;
+  var b = $('stepbtn');
+  if(p.min){ b.style.display = 'block'; b.textContent = 'Iniciar cronômetro de ' + p.min + ' min'; b.onclick = function(){ start(p.min); }; }
+  else b.style.display = 'none';
+  $('prev').style.opacity = idx === 0 ? .4 : 1;
+  $('next').style.opacity = idx === P.length-1 ? .4 : 1;
+}
+$('prev').onclick = function(){ if(idx>0){ idx--; renderStep(); } };
+$('next').onclick = function(){ if(idx<P.length-1){ idx++; renderStep(); } };
+renderStep();
+
+/* ===== Manter a tela acesa ===== */
+function keepAwake(){
+  try{ if(navigator.wakeLock) navigator.wakeLock.request('screen'); }catch(e){}
+}
+keepAwake();
+document.addEventListener('visibilitychange', function(){ if(!document.hidden) keepAwake(); });
+document.addEventListener('touchstart', audio, {once:true});
+</script>
+</body>
+</html>
