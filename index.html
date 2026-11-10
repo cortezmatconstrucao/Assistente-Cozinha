@@ -13,26 +13,42 @@ html,body{width:100%;height:100%}
 body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#2e3440;background:#f6efe9;background:radial-gradient(ellipse at 5% 5%,#ffd9c7,transparent 65%),radial-gradient(ellipse at 95% 10%,#cfe3fb,transparent 65%),radial-gradient(ellipse at 90% 95%,#cdeedd,transparent 65%),#eee5f4;-webkit-user-select:none;user-select:none}
 /* iOS 9: no Grid, CSS variables, flex gap or mandatory backdrop blur. */
 .grid{position:relative;width:100%;height:100%;min-height:650px}
-.card{position:absolute;overflow:hidden;padding:24px 28px;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:30px;box-shadow:0 8px 24px rgba(90,80,110,.10);display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column}
-#clock,#timer{left:2%;width:48%}#weather,#recipe{left:52%;width:46%}
-#clock,#weather{top:2.4%;height:41%}#timer,#recipe{top:45.8%;height:51.8%}
-.label{font-size:18px;font-weight:600;color:#5b6472;margin-bottom:10px}
-#weather{display:block}#clock{-webkit-justify-content:center;justify-content:center}
-#time{font-size:140px;font-size:18vmin;font-weight:700;letter-spacing:-.04em;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
-#time span{opacity:.5}#date{font-size:26px;line-height:1.3;font-weight:500;margin-top:16px;color:#5b6472}
-#now{display:table;width:100%;margin:0 0 8px}#now>div{display:table-cell;vertical-align:middle}#now .ico{font-size:58px;width:72px;line-height:1.2}#now .temp{font-size:68px;font-weight:700;line-height:1.1;white-space:nowrap}#now .desc{font-size:23px;font-weight:600;line-height:1.1}#now .det{font-size:16px;color:#5b6472;margin-top:5px;line-height:1.25}
-#wmsg{font-size:17px;color:#5b6472;line-height:1.35;margin-bottom:8px}
-#days{position:absolute;left:28px;right:28px;bottom:24px;display:-webkit-flex;display:flex;-webkit-flex-shrink:0;flex-shrink:0}#days .day+.day{margin-left:8px}
-.day{-webkit-flex:1;flex:1;background:rgba(255,255,255,.6);border-radius:15px;padding:8px 2px;text-align:center}.day b{display:block;font-size:18px;line-height:21px;font-weight:600}.day i{display:block;font-style:normal;font-size:27px;line-height:30px;margin:2px 0}.day span{font-size:21px;line-height:24px;font-weight:600}.day small{display:block;font-size:14px;line-height:16px;color:#5b6472;margin-top:2px}
-#tdisp{font-size:100px;font-size:13vmin;font-weight:700;line-height:1.1;text-align:center;margin:6px 0 20px;font-variant-numeric:tabular-nums}
+.card{position:absolute;overflow:hidden;padding:22px 26px;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:30px;box-shadow:0 8px 24px rgba(90,80,110,.10);display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column}
+#clock,#timer,#music{left:2%;width:44%}
+#recipe{left:48%;width:50%}
+#clock{top:2.4%;height:22%}
+#timer{top:26.8%;height:42.4%}
+#music{top:71.6%;height:26%}
+#recipe{top:2.4%;height:95.2%}
+.label{font-size:18px;font-weight:600;color:#5b6472;margin-bottom:8px}
+#clock{-webkit-justify-content:center;justify-content:center}
+#time{font-size:90px;font-size:13vmin;font-weight:700;letter-spacing:-.04em;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+#time span{opacity:.5}#date{font-size:22px;line-height:1.25;font-weight:500;margin-top:10px;color:#5b6472}
+#tdisp{font-size:88px;font-size:12vmin;font-weight:700;line-height:1.1;text-align:center;margin:2px 0 14px;font-variant-numeric:tabular-nums}
 .row{display:-webkit-flex;display:flex;width:100%;-webkit-flex-shrink:0;flex-shrink:0}.row .btn+.btn{margin-left:10px}
 .btn{-webkit-appearance:none;appearance:none;-webkit-flex:1;flex:1;min-width:0;min-height:54px;border:0;border-radius:20px;padding:16px 8px;font:inherit;font-size:27px;line-height:1.15;font-weight:700;color:#2e3440;background:rgba(255,255,255,.85);box-shadow:0 3px 10px rgba(90,80,110,.09);cursor:pointer}
 .btn:active{background:#e9e2dc}.btn.main{background:#d96f4a;color:#fff}.btn.sec{font-size:22px;font-weight:600;background:rgba(255,255,255,.6)}.btn:disabled{opacity:.4;cursor:default}
 #timer .row+.row{margin-top:12px}#timer.ring{background:#ffdfbd}#stop{display:none;background:#bd3632;color:white;font-size:29px}#timer.ring #stop{display:block}#timer.ring .row{display:none}#timer.ring #stoprow{display:-webkit-flex;display:flex}#stoprow{display:none}
-#recipe h2{font-size:25px;font-weight:700;margin-bottom:3px}#dots{display:-webkit-flex;display:flex;margin:8px 0 12px;-webkit-flex-shrink:0;flex-shrink:0}#dots i{-webkit-flex:1;flex:1;height:7px;border-radius:5px;background:rgba(255,255,255,.8)}#dots i+i{margin-left:6px}#dots i.on{background:#6fae94}
-#step{-webkit-flex:1;flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}#stepn{font-size:18px;font-weight:600;color:#477b66;margin-bottom:7px}#steptxt{font-size:28px;font-weight:600;line-height:1.25}#stepbtn{margin-top:10px;padding:12px 15px;font-size:20px;background:#cdeedd;min-height:48px}#recipe>.row{margin-top:14px}#recipe>.row .btn{font-size:24px;padding:14px 8px}
-@media(max-height:700px) and (min-aspect-ratio:1/1){.grid{min-height:600px}.card{padding:18px 24px}#weather{padding-top:10px;padding-bottom:10px}#weather .label{margin-bottom:5px}#days{left:24px;right:24px;bottom:10px}#now .ico{font-size:48px;width:62px}#date{font-size:23px}#tdisp{margin-bottom:12px}#steptxt{font-size:25px}#recipe h2{font-size:23px}.label{margin-bottom:7px}#now .temp{font-size:60px}.day{padding:5px 2px}}
-@media(max-aspect-ratio:1/1){body{overflow-y:auto}.grid{height:auto;min-height:100%}.card{position:relative!important;top:auto!important;left:auto!important;width:94%!important;height:auto!important;margin:3% auto;padding:24px}#clock{min-height:200px}#weather{min-height:300px}#timer{min-height:330px}#recipe{min-height:390px}#time{font-size:19vmin}#tdisp{font-size:100px}#step{min-height:170px}#date{font-size:23px}}
+/* Música */
+#music{-webkit-justify-content:center;justify-content:center}
+#station{font-size:24px;font-weight:700;margin-bottom:2px}
+#mstat{font-size:17px;color:#5b6472;margin-bottom:12px}
+#music .btn{font-size:26px}
+/* Receita */
+#rsel{-webkit-appearance:none;appearance:none;width:100%;font:inherit;font-size:23px;font-weight:600;color:#2e3440;background:rgba(255,255,255,.85);border:0;border-radius:16px;padding:12px 14px;margin-bottom:12px;box-shadow:0 3px 10px rgba(90,80,110,.09)}
+#tabs{margin-bottom:12px}
+#tabs .btn{font-size:22px;padding:12px 8px;min-height:48px}
+#tabs .btn.on{background:#6fae94;color:#fff}
+#rbody{-webkit-flex:1;flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#rbody ul{list-style:none}
+#rbody li{font-size:24px;font-weight:600;line-height:1.3;padding:10px 2px;border-bottom:1px solid rgba(90,80,110,.12)}
+#rbody li:last-child{border-bottom:0}
+#rnote{font-size:16px;color:#5b6472;margin-top:10px}
+#dots{display:-webkit-flex;display:flex;margin:4px 0 12px;-webkit-flex-shrink:0;flex-shrink:0}#dots i{-webkit-flex:1;flex:1;height:7px;border-radius:5px;background:rgba(255,255,255,.8)}#dots i+i{margin-left:6px}#dots i.on{background:#6fae94}
+#stepn{font-size:18px;font-weight:600;color:#477b66;margin-bottom:7px}#steptxt{font-size:28px;font-weight:600;line-height:1.25}#stepbtn{margin-top:10px;padding:12px 15px;font-size:20px;background:#cdeedd;min-height:48px}
+#stepnav{margin-top:14px}#stepnav .btn{font-size:24px;padding:14px 8px}
+@media(max-height:700px) and (min-aspect-ratio:1/1){.grid{min-height:600px}.card{padding:16px 22px}.label{margin-bottom:6px}#time{font-size:80px}#date{font-size:20px;margin-top:6px}#tdisp{margin-bottom:10px}#rsel{margin-bottom:8px}#steptxt{font-size:25px}#rbody li{font-size:21px;padding:8px 2px}#station{font-size:21px}#mstat{margin-bottom:8px}}
+@media(max-aspect-ratio:1/1){body{overflow-y:auto}.grid{height:auto;min-height:100%}.card{position:relative!important;top:auto!important;left:auto!important;width:94%!important;height:auto!important;margin:3% auto;padding:22px}#clock{min-height:170px}#timer{min-height:330px}#music{min-height:180px}#recipe{min-height:480px}#time{font-size:19vmin}#tdisp{font-size:90px}#rbody{min-height:200px}#date{font-size:21px}}
 </style>
 </head>
 <body>
@@ -41,16 +57,6 @@ body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#2e3440;backgrou
   <section class="card" id="clock">
     <div id="time">--<span>:</span>--</div>
     <div id="date"></div>
-  </section>
-
-  <section class="card" id="weather">
-    <div class="label">Braúna – SP</div>
-    <div id="now"><div class="ico" id="wico">…</div>
-      <div><div class="temp" id="wtemp">--°</div></div>
-      <div><div class="desc" id="wdesc">Carregando</div><div class="det" id="wdet"></div></div>
-    </div>
-    <div id="wmsg"></div>
-    <div id="days"></div>
   </section>
 
   <section class="card" id="timer">
@@ -69,16 +75,27 @@ body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#2e3440;backgrou
     <div class="row" id="stoprow"><button class="btn" id="stop">Parar alarme</button></div>
   </section>
 
-  <section class="card" id="recipe">
-    <div class="label">Receita</div>
-    <h2 id="rtitle"></h2>
-    <div id="dots"></div>
-    <div id="step">
-      <div id="stepn"></div>
-      <div id="steptxt"></div>
-      <button class="btn" id="stepbtn"></button>
-    </div>
+  <section class="card" id="music">
+    <div class="label">Música</div>
+    <div id="station">Antena 1</div>
+    <div id="mstat">Toque em Tocar para ouvir ao vivo</div>
     <div class="row">
+      <button class="btn main" id="mplay">Tocar</button>
+      <button class="btn sec" id="mstop">Parar</button>
+    </div>
+    <audio id="radio" preload="none" src="https://antenaone.crossradio.com.br/stream/1"></audio>
+  </section>
+
+  <section class="card" id="recipe">
+    <div class="label">Receitas</div>
+    <select id="rsel"></select>
+    <div class="row" id="tabs">
+      <button class="btn on" id="tabing">Ingredientes</button>
+      <button class="btn" id="tabprep">Preparo</button>
+    </div>
+    <div id="dots" style="display:none"></div>
+    <div id="rbody"></div>
+    <div class="row" id="stepnav" style="display:none">
       <button class="btn" id="prev">Anterior</button>
       <button class="btn main" id="next">Próximo</button>
     </div>
@@ -87,21 +104,34 @@ body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#2e3440;backgrou
 </div>
 
 <script>
-/* ===== Troque aqui a receita ===== */
-var RECEITA = {
-  titulo: "Pão de queijo mineiro",
-  passos: [
-    { t: "Aqueça o forno a 200 °C e unte uma assadeira." },
-    { t: "Ferva 1 xícara de leite, 1/2 xícara de óleo e 1 colher de chá de sal." },
-    { t: "Despeje a mistura quente sobre 3 xícaras de polvilho azedo e misture bem." },
-    { t: "Deixe a massa amornar por uns minutos.", min: 10 },
-    { t: "Junte 2 ovos, um a um, e 200 g de queijo meia cura ralado. Amasse até ficar lisa." },
-    { t: "Faça bolinhas com as mãos untadas e distribua na assadeira." },
-    { t: "Asse até dourar.", min: 30 },
-    { t: "Pronto! Sirva quentinho." }
-  ]
-};
-var LAT = -21.50, LON = -50.32; // Braúna - SP
+/* ============================================================
+   RECEITAS: para adicionar uma nova, copie um bloco { ... },
+   preencha titulo, ingredientes e passos. "min" no passo cria
+   um botão que inicia o cronômetro com aqueles minutos.
+   ============================================================ */
+var RECEITAS = [
+  {
+    titulo: "Pão de queijo mineiro",
+    ingredientes: [
+      "3 xícaras de polvilho azedo",
+      "1 xícara de leite",
+      "1/2 xícara de óleo",
+      "1 colher de chá de sal",
+      "2 ovos",
+      "200 g de queijo meia cura ralado"
+    ],
+    passos: [
+      { t: "Aqueça o forno a 200 °C e unte uma assadeira." },
+      { t: "Ferva o leite, o óleo e o sal." },
+      { t: "Despeje a mistura quente sobre o polvilho e misture bem." },
+      { t: "Deixe a massa amornar por uns minutos.", min: 10 },
+      { t: "Junte os ovos, um a um, e o queijo ralado. Amasse até ficar lisa." },
+      { t: "Faça bolinhas com as mãos untadas e distribua na assadeira." },
+      { t: "Asse até dourar.", min: 30 },
+      { t: "Pronto! Sirva quentinho." }
+    ]
+  }
+];
 
 function $(id){return document.getElementById(id)}
 function pad(n){return (n<10?'0':'')+n}
@@ -117,48 +147,6 @@ function tickClock(){
   $('date').textContent = s.charAt(0).toUpperCase() + s.slice(1);
 }
 tickClock(); setInterval(tickClock, 1000);
-
-/* ===== Previsão (Open-Meteo) ===== */
-var WMO = {
-  0:['☀️','Céu limpo'],1:['🌤️','Poucas nuvens'],2:['⛅','Parcialmente nublado'],3:['☁️','Nublado'],
-  45:['🌫️','Neblina'],48:['🌫️','Neblina'],51:['🌦️','Garoa fraca'],53:['🌦️','Garoa'],55:['🌦️','Garoa forte'],
-  61:['🌧️','Chuva fraca'],63:['🌧️','Chuva'],65:['🌧️','Chuva forte'],80:['🌦️','Pancadas de chuva'],
-  81:['🌧️','Pancadas fortes'],82:['⛈️','Temporal'],95:['⛈️','Trovoada'],96:['⛈️','Trovoada com granizo'],99:['⛈️','Trovoada com granizo']
-};
-function wmo(c){return WMO[c] || ['🌡️','—']}
-function loadWeather(){
-  var url = 'https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON+
-    '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m'+
-    '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'+
-    '&timezone=America%2FSao_Paulo&forecast_days=4';
-  var x = new XMLHttpRequest();
-  x.open('GET', url); x.timeout = 15000;
-  x.onload = function(){
-    try{
-      if(x.status < 200 || x.status >= 300) throw new Error('weather');
-      var j = JSON.parse(x.responseText), c = j.current, dl = j.daily, w = wmo(c.weather_code);
-      $('wico').textContent = w[0];
-      $('wtemp').textContent = Math.round(c.temperature_2m) + '°';
-      $('wdesc').textContent = w[1];
-      $('wdet').textContent = 'Sensação ' + Math.round(c.apparent_temperature) + '° · Umidade ' + c.relative_humidity_2m + '%';
-      $('wmsg').textContent = 'Hoje: máx ' + Math.round(dl.temperature_2m_max[0]) + '° · mín ' + Math.round(dl.temperature_2m_min[0]) +
-        '° · chuva ' + dl.precipitation_probability_max[0] + '%';
-      var h = '';
-      for(var i=1;i<4;i++){
-        var dt = new Date(dl.time[i] + 'T12:00:00');
-        var nome = ['dom','seg','ter','qua','qui','sex','sáb'][dt.getDay()];
-        h += '<div class="day"><b>'+nome+'</b><i>'+wmo(dl.weather_code[i])[0]+'</i><span>'+
-          Math.round(dl.temperature_2m_max[i])+'°</span><small>'+Math.round(dl.temperature_2m_min[i])+'° · '+
-          dl.precipitation_probability_max[i]+'%</small></div>';
-      }
-      $('days').innerHTML = h;
-    }catch(e){ fail(); }
-  };
-  x.onerror = x.ontimeout = fail;
-  x.send();
-}
-function fail(){ $('wdesc').textContent = 'Sem atualização'; $('wmsg').textContent = 'Previsão indisponível. Nova tentativa em 1 min.'; setTimeout(loadWeather, 60000); }
-loadWeather(); setInterval(loadWeather, 15*60*1000);
 
 /* ===== Cronômetro e alarme ===== */
 var endAt = 0, left = 0, running = false, ringTimer = null, ctx = null;
@@ -228,24 +216,72 @@ $('pause').onclick = function(){
 $('reset').onclick = function(){ running = false; left = 0; show(0); $('pause').textContent = 'Pausar'; stopAlarm(); };
 $('stop').onclick = function(){ stopAlarm(); show(0); };
 
-/* ===== Receita ===== */
-var idx = 0, P = RECEITA.passos;
-$('rtitle').textContent = RECEITA.titulo;
-var dh = ''; for(var k=0;k<P.length;k++) dh += '<i></i>'; $('dots').innerHTML = dh;
+/* ===== Música: Antena 1 ao vivo ===== */
+var radio = $('radio');
+$('mplay').onclick = function(){
+  audio();
+  $('mstat').textContent = 'Conectando…';
+  radio.play();
+};
+$('mstop').onclick = function(){
+  radio.pause();
+  // Recarrega o stream na próxima vez, sem guardar trecho antigo.
+  try{ radio.load(); }catch(e){}
+  $('mstat').textContent = 'Toque em Tocar para ouvir ao vivo';
+};
+radio.onplaying = function(){ $('mstat').textContent = 'Tocando ao vivo'; };
+radio.onerror = function(){ $('mstat').textContent = 'Não consegui tocar. Verifique a internet.'; };
+radio.onstalled = function(){ $('mstat').textContent = 'Sinal lento, aguarde…'; };
+
+/* ===== Receitas: escolha, ingredientes e preparo ===== */
+var ridx = 0, idx = 0, stage = 'ing';
+var sel = $('rsel');
+for(var r=0;r<RECEITAS.length;r++){
+  var op = document.createElement('option');
+  op.value = r; op.textContent = RECEITAS[r].titulo;
+  sel.appendChild(op);
+}
+function cur(){ return RECEITAS[ridx]; }
+function renderDots(){
+  var P = cur().passos, dh = '';
+  for(var k=0;k<P.length;k++) dh += '<i class="' + (k<=idx ? 'on' : '') + '"></i>';
+  $('dots').innerHTML = dh;
+}
+function renderIngr(){
+  var h = '<h2 style="font-size:26px;font-weight:700;margin-bottom:8px">' + cur().titulo + '</h2><ul>';
+  for(var k=0;k<cur().ingredientes.length;k++) h += '<li>' + cur().ingredientes[k] + '</li>';
+  h += '</ul><div id="rnote">Confira os ingredientes e toque em Preparo para começar o passo a passo.</div>';
+  $('rbody').innerHTML = h;
+}
 function renderStep(){
-  var p = P[idx], d = $('dots').children;
-  for(var k=0;k<d.length;k++) d[k].className = k<=idx ? 'on' : '';
-  $('stepn').textContent = 'Passo ' + (idx+1) + ' de ' + P.length;
-  $('steptxt').textContent = p.t;
-  var b = $('stepbtn');
-  if(p.min){ b.style.display = 'block'; b.textContent = 'Iniciar cronômetro de ' + p.min + ' min'; b.onclick = function(){ start(p.min); }; }
-  else b.style.display = 'none';
+  var P = cur().passos, p = P[idx];
+  renderDots();
+  var h = '<div id="stepn">Passo ' + (idx+1) + ' de ' + P.length + '</div>' +
+          '<div id="steptxt">' + p.t + '</div>';
+  if(p.min) h += '<button class="btn" id="stepbtn">Iniciar cronômetro de ' + p.min + ' min</button>';
+  $('rbody').innerHTML = h;
+  if(p.min) $('stepbtn').onclick = function(){ start(p.min); };
   $('prev').disabled = idx === 0;
   $('next').disabled = idx === P.length-1;
 }
+function render(){
+  if(stage === 'ing'){
+    $('tabing').className = 'btn on'; $('tabprep').className = 'btn';
+    $('dots').style.display = 'none'; $('stepnav').style.display = 'none';
+    renderIngr();
+  }else{
+    $('tabing').className = 'btn'; $('tabprep').className = 'btn on';
+    $('dots').style.display = '-webkit-flex'; $('dots').style.display = 'flex';
+    $('stepnav').style.display = '-webkit-flex'; $('stepnav').style.display = 'flex';
+    renderStep();
+  }
+}
+sel.onchange = function(){ ridx = +sel.value; idx = 0; stage = 'ing'; render(); };
+$('tabing').onclick = function(){ stage = 'ing'; render(); };
+$('tabprep').onclick = function(){ stage = 'prep'; render(); };
 $('prev').onclick = function(){ if(idx>0){ idx--; renderStep(); } };
-$('next').onclick = function(){ if(idx<P.length-1){ idx++; renderStep(); } };
-renderStep();
+$('next').onclick = function(){ if(idx<cur().passos.length-1){ idx++; renderStep(); } };
+render();
 
 /* ===== Tela acesa: apenas navegadores compatíveis =====
    No iOS 9, use Bloqueio Automático > Nunca nos Ajustes do iPad.
