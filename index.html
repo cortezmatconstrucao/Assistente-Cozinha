@@ -111,24 +111,116 @@ body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#2e3440;backgrou
    ============================================================ */
 var RECEITAS = [
   {
-    titulo: "Pão de queijo mineiro",
+    titulo: "Almôndegas ao molho de tomate",
     ingredientes: [
-      "3 xícaras de polvilho azedo",
-      "1 xícara de leite",
-      "1/2 xícara de óleo",
-      "1 colher de chá de sal",
-      "2 ovos",
-      "200 g de queijo meia cura ralado"
+      "500 g de carne moída",
+      "1 dente de alho picado",
+      "1/2 cebola picada",
+      "2 colheres de sopa de farinha de arroz (a receita original leva farinha de rosca ou pão amanhecido, que têm glúten)",
+      "2 colheres de sopa de azeite",
+      "1 ovo",
+      "Sal e pimenta-do-reino a gosto",
+      "Molho de tomate para cozinhar"
     ],
+    obs: ["Sem glúten: a troca por farinha de arroz já está incorporada nesta versão.", "Congelam bem."],
     passos: [
-      { t: "Aqueça o forno a 200 °C e unte uma assadeira." },
-      { t: "Ferva o leite, o óleo e o sal." },
-      { t: "Despeje a mistura quente sobre o polvilho e misture bem." },
-      { t: "Deixe a massa amornar por uns minutos.", min: 10 },
-      { t: "Junte os ovos, um a um, e o queijo ralado. Amasse até ficar lisa." },
-      { t: "Faça bolinhas com as mãos untadas e distribua na assadeira." },
-      { t: "Asse até dourar.", min: 30 },
-      { t: "Pronto! Sirva quentinho." }
+      { t: "Misturar tudo e moldar bolinhas." },
+      { t: "Selar na frigideira (ou assar a 200 °C por uns 20 min)." },
+      { t: "Terminar no molho de tomate em fogo baixo por 10-15 min." }
+    ]
+  },
+  {
+    titulo: "Arroz de fraldinha",
+    fonte: "TudoGostoso: https://www.tudogostoso.com.br/receita/320032-arroz-de-fraldinha.html",
+    ingredientes: [
+      "500 g de fraldinha",
+      "1 e 1/2 xícara (chá) de arroz",
+      "200 g de bacon",
+      "1 cebola picada",
+      "2 dentes de alho picados",
+      "1 tomate picado",
+      "1 colher (sopa) de molho shoyu",
+      "1 lata de molho de tomate",
+      "2 folhas de louro",
+      "Sal, pimenta-do-reino, cheiro-verde e azeite a gosto",
+      "Queijo parmesão ralado a gosto (opcional)"
+    ],
+    obs: ["Rende 4 porções. Tempo: cerca de 1h30.", "Sem glúten: shoyu tradicional contém glúten - usar shoyu sem glúten; conferir o rótulo do bacon."],
+    passos: [
+      { t: "Na panela de pressão, fritar o bacon no azeite até dourar e reservar." },
+      { t: "Na mesma panela, selar a fraldinha dos dois lados e reservar." },
+      { t: "Refogar cebola, alho, tomate, shoyu, molho de tomate, sal e pimenta; voltar a fraldinha." },
+      { t: "Cobrir com água, adicionar o louro, tampar e cozinhar 40 min após pegar pressão.", min: 40 },
+      { t: "Retirar a carne e desfiar com dois garfos." },
+      { t: "Cozinhar o arroz no caldo da carne, adicionando mais água se necessário." },
+      { t: "Voltar a carne desfiada à panela e, com o arroz cozido, finalizar com o bacon, o cheiro-verde e o parmesão." }
+    ]
+  },
+  {
+    titulo: "Filé mignon com crosta de castanhas e ervas",
+    ingredientes: [
+      "1,2 kg de filé mignon",
+      "Azeite",
+      "Sal",
+      "Pimenta",
+      "2 colheres de sopa de manteiga",
+      "1/2 xícara de farinha de arroz (no lugar da farinha de rosca)",
+      "1/2 xícara de castanhas trituradas",
+      "1 colher de sopa de tempero verde",
+      "1/2 colher de sopa de orégano",
+      "1/2 colher de sopa de alecrim"
+    ],
+    obs: ["Sem glúten: a troca por farinha de arroz já está incorporada nesta versão."],
+    passos: [
+      { t: "Selar o filé." },
+      { t: "Cobrir com a pasta de manteiga + castanhas + ervas." },
+      { t: "Assar a 200 °C (15-30 min conforme o ponto)." },
+      { t: "Descansar 10 min antes de fatiar.", min: 10 }
+    ]
+  },
+  {
+    titulo: "Fricassê de frango",
+    fonte: "TudoGostoso, receita de Kenia Tavares: https://amp.tudogostoso.com.br/receita/10254-fricasse-de-frango.html",
+    ingredientes: [
+      "1 lata de creme de leite",
+      "1 lata de milho verde",
+      "1 copo de requeijão cremoso",
+      "100 g de azeitona sem caroço",
+      "2 peitos de frango desfiados",
+      "200 g de mussarela fatiada",
+      "100 g de batata palha",
+      "1 xícara de água",
+      "1 pitada de sal"
+    ],
+    obs: ["Rende 5 porções.", "Sem glúten: conferir o rótulo da batata palha (pode ter contaminação com glúten) ou servir sem."],
+    passos: [
+      { t: "Bater no liquidificador o milho, o requeijão, o creme de leite e a água." },
+      { t: "Refogar esse creme com o frango desfiado, as azeitonas e o sal até engrossar." },
+      { t: "Colocar numa assadeira, cobrir com a mussarela e espalhar a batata palha por cima." },
+      { t: "Levar ao forno até borbulhar." },
+      { t: "Servir com arroz branco." }
+    ]
+  },
+  {
+    titulo: "Lentilha",
+    fonte: "TudoGostoso, receita de Giggia: https://www.tudogostoso.com.br/receita/32418-lentilha.html",
+    ingredientes: [
+      "2 colheres de sopa de bacon picado",
+      "1/2 linguiça calabresa grossa picada",
+      "1 cebola média picada",
+      "3 dentes de alho grandes picados",
+      "1 cenoura picada",
+      "2 xícaras de lentilha",
+      "5 xícaras de água",
+      "2 folhas de louro",
+      "Sal a gosto",
+      "Óleo de girassol"
+    ],
+    obs: ["Rende bastante (a fonte indica 20 porções). Tempo: cerca de 20 min.", "Sem glúten: conferir o rótulo da calabresa (sem glúten)."],
+    passos: [
+      { t: "Aquecer o óleo na panela de pressão, dourar o bacon e a calabresa, acrescentar cebola e alho e refogar." },
+      { t: "Juntar lentilha, cenoura, água e louro, tampar e cozinhar 5 min após o início do chiado.", min: 5 },
+      { t: "Tirar a pressão, abrir, acertar o sal e cozinhar mais 1 min." }
     ]
   },
   {
@@ -162,47 +254,6 @@ var RECEITAS = [
     ]
   },
   {
-    titulo: "Almôndegas ao molho de tomate",
-    ingredientes: [
-      "500 g de carne moída",
-      "1 dente de alho picado",
-      "1/2 cebola picada",
-      "2 colheres de sopa de farinha de arroz (a receita original leva farinha de rosca ou pão amanhecido, que têm glúten)",
-      "2 colheres de sopa de azeite",
-      "1 ovo",
-      "Sal e pimenta-do-reino a gosto",
-      "Molho de tomate para cozinhar"
-    ],
-    obs: ["Sem glúten: a troca por farinha de arroz já está incorporada nesta versão.", "Congelam bem."],
-    passos: [
-      { t: "Misturar tudo e moldar bolinhas." },
-      { t: "Selar na frigideira (ou assar a 200 °C por uns 20 min)." },
-      { t: "Terminar no molho de tomate em fogo baixo por 10-15 min." }
-    ]
-  },
-  {
-    titulo: "Filé mignon com crosta de castanhas e ervas",
-    ingredientes: [
-      "1,2 kg de filé mignon",
-      "Azeite",
-      "Sal",
-      "Pimenta",
-      "2 colheres de sopa de manteiga",
-      "1/2 xícara de farinha de arroz (no lugar da farinha de rosca)",
-      "1/2 xícara de castanhas trituradas",
-      "1 colher de sopa de tempero verde",
-      "1/2 colher de sopa de orégano",
-      "1/2 colher de sopa de alecrim"
-    ],
-    obs: ["Sem glúten: a troca por farinha de arroz já está incorporada nesta versão."],
-    passos: [
-      { t: "Selar o filé." },
-      { t: "Cobrir com a pasta de manteiga + castanhas + ervas." },
-      { t: "Assar a 200 °C (15-30 min conforme o ponto)." },
-      { t: "Descansar 10 min antes de fatiar.", min: 10 }
-    ]
-  },
-  {
     titulo: "Torta de atum (ou de frango desfiado)",
     fonte: "Receiteria, Torta de atum low carb, de Tatiana Tambellini: https://www.receiteria.com.br/receita/torta-de-atum-low-carb/",
     ingredientes: [
@@ -228,78 +279,6 @@ var RECEITAS = [
       { t: "Incorporar o fermento com uma espátula." },
       { t: "Em forma redonda de 25 cm untada com azeite, colocar metade da massa, espalhar o recheio e cobrir com o restante da massa." },
       { t: "Polvilhar parmesão e assar em forno preaquecido a 200 °C por cerca de 35 min, até gratinar.", min: 35 }
-    ]
-  },
-  {
-    titulo: "Fricassê de frango",
-    fonte: "TudoGostoso, receita de Kenia Tavares: https://amp.tudogostoso.com.br/receita/10254-fricasse-de-frango.html",
-    ingredientes: [
-      "1 lata de creme de leite",
-      "1 lata de milho verde",
-      "1 copo de requeijão cremoso",
-      "100 g de azeitona sem caroço",
-      "2 peitos de frango desfiados",
-      "200 g de mussarela fatiada",
-      "100 g de batata palha",
-      "1 xícara de água",
-      "1 pitada de sal"
-    ],
-    obs: ["Rende 5 porções.", "Sem glúten: conferir o rótulo da batata palha (pode ter contaminação com glúten) ou servir sem."],
-    passos: [
-      { t: "Bater no liquidificador o milho, o requeijão, o creme de leite e a água." },
-      { t: "Refogar esse creme com o frango desfiado, as azeitonas e o sal até engrossar." },
-      { t: "Colocar numa assadeira, cobrir com a mussarela e espalhar a batata palha por cima." },
-      { t: "Levar ao forno até borbulhar." },
-      { t: "Servir com arroz branco." }
-    ]
-  },
-  {
-    titulo: "Arroz de fraldinha",
-    fonte: "TudoGostoso: https://www.tudogostoso.com.br/receita/320032-arroz-de-fraldinha.html",
-    ingredientes: [
-      "500 g de fraldinha",
-      "1 e 1/2 xícara (chá) de arroz",
-      "200 g de bacon",
-      "1 cebola picada",
-      "2 dentes de alho picados",
-      "1 tomate picado",
-      "1 colher (sopa) de molho shoyu",
-      "1 lata de molho de tomate",
-      "2 folhas de louro",
-      "Sal, pimenta-do-reino, cheiro-verde e azeite a gosto",
-      "Queijo parmesão ralado a gosto (opcional)"
-    ],
-    obs: ["Rende 4 porções. Tempo: cerca de 1h30.", "Sem glúten: shoyu tradicional contém glúten - usar shoyu sem glúten; conferir o rótulo do bacon."],
-    passos: [
-      { t: "Na panela de pressão, fritar o bacon no azeite até dourar e reservar." },
-      { t: "Na mesma panela, selar a fraldinha dos dois lados e reservar." },
-      { t: "Refogar cebola, alho, tomate, shoyu, molho de tomate, sal e pimenta; voltar a fraldinha." },
-      { t: "Cobrir com água, adicionar o louro, tampar e cozinhar 40 min após pegar pressão.", min: 40 },
-      { t: "Retirar a carne e desfiar com dois garfos." },
-      { t: "Cozinhar o arroz no caldo da carne, adicionando mais água se necessário." },
-      { t: "Voltar a carne desfiada à panela e, com o arroz cozido, finalizar com o bacon, o cheiro-verde e o parmesão." }
-    ]
-  },
-  {
-    titulo: "Lentilha",
-    fonte: "TudoGostoso, receita de Giggia: https://www.tudogostoso.com.br/receita/32418-lentilha.html",
-    ingredientes: [
-      "2 colheres de sopa de bacon picado",
-      "1/2 linguiça calabresa grossa picada",
-      "1 cebola média picada",
-      "3 dentes de alho grandes picados",
-      "1 cenoura picada",
-      "2 xícaras de lentilha",
-      "5 xícaras de água",
-      "2 folhas de louro",
-      "Sal a gosto",
-      "Óleo de girassol"
-    ],
-    obs: ["Rende bastante (a fonte indica 20 porções). Tempo: cerca de 20 min.", "Sem glúten: conferir o rótulo da calabresa (sem glúten)."],
-    passos: [
-      { t: "Aquecer o óleo na panela de pressão, dourar o bacon e a calabresa, acrescentar cebola e alho e refogar." },
-      { t: "Juntar lentilha, cenoura, água e louro, tampar e cozinhar 5 min após o início do chiado.", min: 5 },
-      { t: "Tirar a pressão, abrir, acertar o sal e cozinhar mais 1 min." }
     ]
   }
 ];
