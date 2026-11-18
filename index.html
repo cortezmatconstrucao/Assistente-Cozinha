@@ -88,6 +88,10 @@ body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#2e3440;backgrou
 
   <section class="card" id="recipe">
     <div class="label">Receitas</div>
+    <div class="row" id="cattabs">
+      <button class="btn on" id="catsal">Salgadas</button>
+      <button class="btn" id="catdoc">Doces</button>
+    </div>
     <select id="rsel"></select>
     <div class="row" id="tabs">
       <button class="btn on" id="tabing">Ingredientes</button>
@@ -108,6 +112,7 @@ body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#2e3440;backgrou
    RECEITAS: para adicionar uma nova, copie um bloco { ... },
    preencha titulo, ingredientes e passos. "min" no passo cria
    um botão que inicia o cronômetro com aqueles minutos.
+   categoria: "doce" coloca a receita na aba Doces; sem ela, Salgadas.
    ============================================================ */
 var RECEITAS = [
   {
@@ -157,6 +162,27 @@ var RECEITAS = [
     ]
   },
   {
+    titulo: "Bolo de banana",
+    categoria: "doce",
+    ingredientes: [
+      "3 bananas maduras",
+      "3 ovos",
+      "1/2 xícara de chá de óleo",
+      "2 colheres de sopa de uvas-passas",
+      "1 e 1/2 xícara de chá de aveia em flocos finos",
+      "1 colher de sopa de fermento",
+      "Canela a gosto"
+    ],
+    obs: ["Receita enviada por foto."],
+    passos: [
+      { t: "Preaquecer o forno a 180 °C." },
+      { t: "Bater no liquidificador as bananas, os ovos, as uvas-passas e o óleo." },
+      { t: "Misturar a parte batida com a aveia e, em seguida, misturar o fermento levemente." },
+      { t: "Colocar em forminhas individuais de silicone; se preferir, untar com azeite e colocar uma rodela de banana no fundo da forma." },
+      { t: "Assar por aproximadamente 25 min a 180 °C.", min: 25 }
+    ]
+  },
+  {
     titulo: "Curry de frango com legumes e leite de coco",
     fonte: "Amor e Receitas, \"Frango ao Curry com Leite de Coco e Legumes\", de Gisleini Cipriani: https://amoreceitas.com.br/frango-ao-curry-com-leite-de-coco-e-legumes/",
     ingredientes: [
@@ -186,6 +212,23 @@ var RECEITAS = [
       { t: "Adicionar os legumes, mexer e cozinhar 5 minutos." },
       { t: "Despejar o leite de coco, o caldo e o shoyu, deixar ferver, voltar o frango à panela e cozinhar em fogo médio-baixo por 10 a 15 minutos, até o frango cozinhar e os legumes amaciarem." },
       { t: "Finalizar com o limão e ajustar sal e pimenta." }
+    ]
+  },
+  {
+    titulo: "Doce de banana sem açúcar adicionado",
+    categoria: "doce",
+    fonte: "Receita Natureba, \"Doce de Banana Sem Açúcar\": https://receitanatureba.com/doce-de-banana-sem-acucar/",
+    ingredientes: [
+      "3 bananas grandes bem maduras",
+      "1/4 de xícara de água",
+      "Canela em pó a gosto (opcional)"
+    ],
+    obs: ["Sem açúcar adicionado: a doçura vem da própria banana bem madura.", "A receita original lista adoçante como opcional; esta versão não usa.", "Fica bom de colher, como geleia (mais mole) ou em bolinhas tipo brigadeiro."],
+    passos: [
+      { t: "Cortar as bananas em rodelas médias e colocar em uma panela." },
+      { t: "Levar ao fogo médio, mexendo, até a banana começar a derreter como um purê." },
+      { t: "Adicionar a água (e a canela, se quiser) e mexer por uns 10 min, até ficar consistente e começar a soltar do fundo da panela; não deixar grudar.", min: 10 },
+      { t: "Desligar, passar para um recipiente limpo e levar à geladeira por 1 hora ou até firmar." }
     ]
   },
   {
@@ -497,13 +540,28 @@ radio.onerror = function(){ $('mstat').textContent = 'Não consegui tocar. Verif
 radio.onstalled = function(){ $('mstat').textContent = 'Sinal lento, aguarde…'; };
 
 /* ===== Receitas: escolha, ingredientes e preparo ===== */
-var ridx = 0, idx = 0, stage = 'ing';
+var ridx = 0, idx = 0, stage = 'ing', cat = 'sal';
 var sel = $('rsel');
-for(var r=0;r<RECEITAS.length;r++){
-  var op = document.createElement('option');
-  op.value = r; op.textContent = RECEITAS[r].titulo;
-  sel.appendChild(op);
+function fillSel(){
+  sel.innerHTML = '';
+  for(var r=0;r<RECEITAS.length;r++){
+    var doce = RECEITAS[r].categoria === 'doce';
+    if((cat === 'doc') !== doce) continue;
+    var op = document.createElement('option');
+    op.value = r; op.textContent = RECEITAS[r].titulo;
+    sel.appendChild(op);
+  }
 }
+fillSel();
+function setCat(c){
+  cat = c;
+  $('catsal').className = c === 'sal' ? 'btn on' : 'btn';
+  $('catdoc').className = c === 'doc' ? 'btn on' : 'btn';
+  fillSel();
+  ridx = +sel.value; idx = 0; stage = 'ing'; render();
+}
+$('catsal').onclick = function(){ setCat('sal'); };
+$('catdoc').onclick = function(){ setCat('doc'); };
 function cur(){ return RECEITAS[ridx]; }
 function renderDots(){
   var P = cur().passos, dh = '';
